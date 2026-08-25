@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    错误 {{ top }} - 中文学习
+{% endblock %}
+
+{% block main %}
+<div class="container text-center py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            
+            <!-- Fehler-Meme Box -->
+            <div class="card shadow-sm border-0 mb-4">
+                <div class="card-body p-3 bg-white rounded">
+                    <img 
+                        class="img-fluid rounded" 
+                        src="https://memegen.link{{ top }}/{{ bottom }}.png" 
+                        alt="Error {{ top }}: {{ bottom }}"
+                        style="max-height: 400px; width: auto;"
+                    >
+                </div>
+            </div>
+
+            <!-- Zurück-Button -->
+            <a href="/" class="btn text-white px-4" style="background-color: #07566b;">
+                返回首页
+            </a>
+            
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,255 @@
+{% extends "layout.html" %}
+
+{% block title %}
+添加词汇 - 中文学习
+{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid">
+
+    <!-- Header -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <div class="d-flex align-items-center gap-2 mb-2">
+
+                <a
+                    href="{{ url_for('admin') }}"
+                    class="text-secondary text-decoration-none"
+                >
+                    教师管理
+                </a>
+
+                <span class="text-secondary">
+                    /
+                </span>
+
+                <a
+                    href="{{ url_for('admin_section', section_id=section['id']) }}"
+                    class="text-secondary text-decoration-none"
+                >
+                    {{ section['title'] }}
+                </a>
+
+                <span class="text-secondary">
+                    /
+                </span>
+
+                <span class="text-secondary">
+                    添加词汇
+                </span>
+
+            </div>
+
+            <h1 class="h2 fw-bold mb-2">
+                添加中文词汇
+            </h1>
+
+            <p class="text-secondary mb-0">
+                添加词汇到「{{ section['title'] }}」
+            </p>
+
+        </div>
+
+        <a
+            href="{{ url_for('admin_section', section_id=section['id']) }}"
+            class="btn btn-outline-secondary"
+        >
+            返回单元
+        </a>
+
+    </div>
+
+
+    <!-- Form -->
+
+    <div class="row g-4">
+
+        <div class="col-12 col-lg-8">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body p-4">
+
+                    <form
+                        action="{{ url_for('add_vocabulary', section_id=section['id']) }}"
+                        method="POST"
+                    >
+
+                        <!-- Chinese -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="chinese"
+                                class="form-label fw-semibold"
+                            >
+                                中文词汇
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control form-control-lg"
+                                id="chinese"
+                                name="chinese"
+                                placeholder="例如：你好"
+                                required
+                                autofocus
+                            >
+
+                            <div class="form-text">
+                                输入要学习的中文词汇。
+                            </div>
+
+                        </div>
+
+
+                        <!-- Pinyin -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="pinyin"
+                                class="form-label fw-semibold"
+                            >
+                                拼音
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="pinyin"
+                                name="pinyin"
+                                placeholder="例如：nǐ hǎo"
+                            >
+
+                            <div class="form-text">
+                                输入这个词汇的拼音。
+                            </div>
+
+                        </div>
+
+
+                        <!-- Translation -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="translation"
+                                class="form-label fw-semibold"
+                            >
+                                翻译
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="translation"
+                                name="translation"
+                                placeholder="例如：Hello"
+                                required
+                            >
+
+                            <div class="form-text">
+                                输入这个词汇的英文翻译。
+                            </div>
+
+                        </div>
+
+
+                        <!-- Relevance -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="relevance"
+                                class="form-label fw-semibold"
+                            >
+                                相关性分数
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                id="relevance"
+                                name="relevance"
+                                value="1"
+                                min="1"
+                                step="1"
+                                required
+                            >
+
+                            <div class="form-text">
+                                数字越大表示这个词汇越重要。
+                            </div>
+
+                        </div>
+
+
+                        <hr class="my-4">
+
+
+                        <!-- Buttons -->
+
+                        <div class="d-flex justify-content-between">
+
+                            <a
+                                href="{{ url_for('admin_section', section_id=section['id']) }}"
+                                class="btn btn-outline-secondary"
+                            >
+                                取消
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary px-4"
+                            >
+                                添加词汇
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Information -->
+
+        <div class="col-12 col-lg-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body p-4">
+
+                    <div class="fs-2 mb-3">
+                        📝
+                    </div>
+
+                    <h5 class="fw-bold">
+                        添加词汇
+                    </h5>
+
+                    <p class="text-secondary mb-0">
+                        为当前学习单元添加中文词汇、
+                        拼音、翻译和相关性分数。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

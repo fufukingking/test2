@@ -1,0 +1,119 @@
+
+{% extends "layout.html" %}
+
+
+{% block title %}
+登录 - 中文学习
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container">
+
+    <div class="row justify-content-center">
+
+        <div class="col-md-6 col-lg-4">
+
+            <div class="card shadow-sm mt-5">
+
+                <div class="card-body p-4">
+
+                    <div class="text-center mb-4">
+
+                        <h1 class="h3 mb-2">
+                            中文学习
+                        </h1>
+
+                        <p class="text-secondary mb-0">
+                            登录你的学习账户
+                        </p>
+
+                    </div>
+
+
+                    <form
+                        action="/login"
+                        method="post"
+                    >
+
+                        <div class="mb-3">
+
+                            <label
+                                for="username"
+                                class="form-label"
+                            >
+                                用户名
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control"
+                                id="username"
+                                name="username"
+                                autocomplete="username"
+                                autofocus
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="mb-3">
+
+                            <label
+                                for="password"
+                                class="form-label"
+                            >
+                                密码
+                            </label>
+
+                            <input
+                                type="password"
+                                class="form-control"
+                                id="password"
+                                name="password"
+                                autocomplete="current-password"
+                                required
+                            >
+
+                        </div>
+
+
+                        <button
+                            type="submit"
+                            class="btn btn-primary w-100"
+                        >
+                            登录
+                        </button>
+
+                    </form>
+
+
+                    <div class="text-center mt-4">
+
+                        <span class="text-secondary">
+                            还没有账户？
+                        </span>
+
+                        <a
+                            href="/register"
+                            class="text-decoration-none"
+                        >
+                            注册
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+```

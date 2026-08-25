@@ -1,0 +1,126 @@
+{% extends "admin/layout.html" %}
+
+
+{% block title %}
+Excel 导入 - 中文学习
+{% endblock %}
+
+
+{% block admin_main %}
+
+<div class="container-fluid">
+
+    <!-- ================================================== -->
+    <!-- HEADER -->
+    <!-- ================================================== -->
+
+    <div class="mb-4">
+
+        <h1 class="h2 mb-1">
+            Excel 导入
+        </h1>
+
+        <p class="text-secondary mb-0">
+            将 Excel 文件中的中文词汇导入到学习单元
+        </p>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- SECTION INFO -->
+    <!-- ================================================== -->
+
+    <div class="card shadow-sm mb-4">
+
+        <div class="card-body">
+
+            <h2 class="h4">
+                {{ section["title"] }}
+            </h2>
+
+            {% if section["description"] %}
+
+                <p class="text-secondary mb-0">
+                    {{ section["description"] }}
+                </p>
+
+            {% endif %}
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- UPLOAD -->
+    <!-- ================================================== -->
+
+    <div class="card shadow-sm">
+
+        <div class="card-body">
+
+            <h2 class="h4 mb-3">
+                📊 Excel-Datei hochladen
+            </h2>
+
+            <p class="text-secondary">
+                Es wird nur die erste Spalte des ersten
+                Tabellenblatts gelesen.
+            </p>
+
+            <p class="text-secondary">
+                Jede Zeile wird als eine chinesische Vokabel importiert.
+            </p>
+
+
+            <form
+                method="POST"
+                enctype="multipart/form-data"
+            >
+
+                <div class="mb-3">
+
+                    <label
+                        for="excel_file"
+                        class="form-label"
+                    >
+                        Excel-Datei
+                    </label>
+
+                    <input
+                        type="file"
+                        class="form-control"
+                        id="excel_file"
+                        name="excel_file"
+                        accept=".xlsx,.xls"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="btn btn-success"
+                >
+                    📥 Vokabeln importieren
+                </button>
+
+
+                <a
+                    href="/admin/section/{{ section['id'] }}"
+                    class="btn btn-outline-secondary ms-2"
+                >
+                    Abbrechen
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

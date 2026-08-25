@@ -1,0 +1,196 @@
+
+{% extends "layout.html" %}
+
+
+{% block title %}
+排行榜 - 中文学习
+{% endblock %}
+
+
+{% block main %}
+
+<div class="container-fluid">
+
+    <!-- Header -->
+
+    <div class="text-center mb-4">
+
+        <h1 class="display-6 fw-semibold">
+            🏆 学习排行榜
+        </h1>
+
+        <p class="text-secondary">
+            看看谁在中文学习中取得了最好的成绩
+        </p>
+
+    </div>
+
+
+    {% if leaderboard %}
+
+        <div class="row justify-content-center">
+
+            <div class="col-12 col-lg-8 col-xl-6">
+
+                <div class="card shadow-sm">
+
+                    <div class="card-body p-0">
+
+                        <div class="table-responsive">
+
+                            <table class="table table-hover mb-0 align-middle">
+
+                                <thead
+                                    class="table-light"
+                                >
+
+                                    <tr>
+
+                                        <th
+                                            scope="col"
+                                            class="text-center"
+                                            style="width: 80px;"
+                                        >
+                                            排名
+                                        </th>
+
+                                        <th scope="col">
+                                            学生
+                                        </th>
+
+                                        <th
+                                            scope="col"
+                                            class="text-end"
+                                        >
+                                            积分
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+
+                                <tbody>
+
+                                    {% for user in leaderboard %}
+
+                                        <tr>
+
+                                            <td class="text-center">
+
+                                                {% if loop.index == 1 %}
+
+                                                    <span
+                                                        class="fs-4"
+                                                        title="第一名"
+                                                    >
+                                                        🥇
+                                                    </span>
+
+                                                {% elif loop.index == 2 %}
+
+                                                    <span
+                                                        class="fs-4"
+                                                        title="第二名"
+                                                    >
+                                                        🥈
+                                                    </span>
+
+                                                {% elif loop.index == 3 %}
+
+                                                    <span
+                                                        class="fs-4"
+                                                        title="第三名"
+                                                    >
+                                                        🥉
+                                                    </span>
+
+                                                {% else %}
+
+                                                    <span class="fw-semibold">
+                                                        {{ loop.index }}
+                                                    </span>
+
+                                                {% endif %}
+
+                                            </td>
+
+
+                                            <td>
+
+                                                <span class="fw-semibold">
+                                                    {{ user["username"] }}
+                                                </span>
+
+                                            </td>
+
+
+                                            <td class="text-end">
+
+                                                <span class="badge bg-primary fs-6">
+                                                    {{ user["total_points"] }} 分
+                                                </span>
+
+                                            </td>
+
+                                        </tr>
+
+                                    {% endfor %}
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% else %}
+
+        <div class="row justify-content-center">
+
+            <div class="col-md-8 col-lg-6">
+
+                <div class="card shadow-sm text-center">
+
+                    <div class="card-body py-5">
+
+                        <div class="display-4 mb-3">
+                            🏆
+                        </div>
+
+                        <h2 class="h4">
+                            还没有排行榜数据
+                        </h2>
+
+                        <p class="text-secondary mb-4">
+                            开始学习并获得积分，成为第一名吧！
+                        </p>
+
+                        <a
+                            href="/sections"
+                            class="btn btn-primary"
+                        >
+                            开始学习
+                        </a>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
+```

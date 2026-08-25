@@ -1,0 +1,147 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ section["title"] }}
+{% endblock %}
+
+{% block main %}
+
+<div class="container mt-4">
+
+    <!-- ================================================== -->
+    <!-- NAVIGATION -->
+    <!-- ================================================== -->
+
+    <div class="mb-4">
+
+        <a
+            href="/sections"
+            class="btn btn-outline-secondary"
+        >
+            返回所有学习单元
+        </a>
+
+        {% if session.get("role") == "teacher" %}
+
+            <a
+                href="/admin/section/{{ section['id'] }}/import-excel"
+                class="btn btn-success ms-2"
+            >
+                📊 Excel 导入
+            </a>
+
+            <a
+                href="/admin/section/{{ section['id'] }}"
+                class="btn btn-outline-primary ms-2"
+            >
+                管理
+            </a>
+
+        {% endif %}
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- SECTION HEADER -->
+    <!-- ================================================== -->
+
+    <div class="text-center mb-5">
+
+        <h1>
+            {{ section["title"] }}
+        </h1>
+
+        {% if section["description"] %}
+
+            <p class="text-muted">
+                {{ section["description"] }}
+            </p>
+
+        {% endif %}
+
+
+        <div class="mt-4">
+
+            <a
+                href="/section/{{ section['id'] }}/practice"
+                class="btn btn-success btn-lg"
+            >
+                学习词汇
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- ================================================== -->
+    <!-- VOCABULARY -->
+    <!-- ================================================== -->
+
+    {% if vocabulary %}
+
+        <h2 class="mb-4">
+            Vokabeln
+        </h2>
+
+        <div class="row">
+
+            {% for word in vocabulary %}
+
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <div class="card-body text-center">
+
+                            <h3 class="card-title">
+                                {{ word["chinese"] }}
+                            </h3>
+
+
+                            {% if word["pinyin"] %}
+
+                                <p class="text-muted mb-2">
+                                    {{ word["pinyin"] }}
+                                </p>
+
+                            {% endif %}
+
+
+                            {% if word["translation"] %}
+
+                                <p class="fs-5">
+                                    {{ word["translation"] }}
+                                </p>
+
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+
+    <!-- ================================================== -->
+    <!-- NO VOCABULARY -->
+    <!-- ================================================== -->
+
+    {% else %}
+
+        <div class="alert alert-info text-center">
+
+            此单元还没有词汇。请稍后再来，或者联系管理员添加词汇。
+
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

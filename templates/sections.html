@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    学习单元
+{% endblock %}
+
+{% block main %}
+
+<div class="container mt-4">
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1>学习单元</h1>
+            <p class="text-muted">
+                选择一个学习单元开始学习。
+            </p>
+        </div>
+
+        {% if session.get("role") == "teacher" %}
+            <a
+                href="/admin/section/create"
+                class="btn btn-primary"
+            >
+                创建学习单元
+            </a>
+        {% endif %}
+    </div>
+
+    {% if sections %}
+
+        <div class="row">
+
+            {% for section in sections %}
+
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <div class="card-body">
+
+                            <h3 class="card-title">
+                                {{ section["title"] }}
+                            </h3>
+
+                            {% if section["description"] %}
+                                <p class="card-text text-muted">
+                                    {{ section["description"] }}
+                                </p>
+                            {% else %}
+                                <p class="card-text text-muted">
+                                    暂无描述
+                                </p>
+                            {% endif %}
+
+                            <p class="mb-3">
+                                <strong>
+                                    {{ section["vocabulary_count"] }}
+                                </strong>
+                                个词汇
+                            </p>
+
+                            <a
+                                href="/section/{{ section['id'] }}"
+                                class="btn btn-primary"
+                            >
+                                开始学习
+                            </a>
+
+                            {% if session.get("role") == "teacher" %}
+                                <a
+                                    href="/admin/section/{{ section['id'] }}"
+                                    class="btn btn-outline-secondary ms-2"
+                                >
+                                    管理
+                                </a>
+                            {% endif %}
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="alert alert-info">
+            目前还没有学习单元。
+        </div>
+
+        {% if session.get("role") == "teacher" %}
+            <a
+                href="/admin/section/create"
+                class="btn btn-primary"
+            >
+                创建第一个学习单元
+            </a>
+        {% endif %}
+
+    {% endif %}
+
+</div>
+
+{% endblock %}

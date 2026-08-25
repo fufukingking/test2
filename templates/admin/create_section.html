@@ -1,0 +1,262 @@
+{% extends "layout.html" %}
+
+{% block title %}
+新建学习单元 - 中文学习
+{% endblock %}
+
+{% block main %}
+
+<div class="container-fluid">
+
+    <!-- Admin header -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <h1 class="h2 mb-1">
+                教师管理
+            </h1>
+
+            <p class="text-secondary mb-0">
+                管理学习单元和中文词汇
+            </p>
+
+        </div>
+
+        <a
+            href="{{ url_for('index') }}"
+            class="btn btn-outline-secondary"
+        >
+            返回学习平台
+        </a>
+
+    </div>
+
+
+    <!-- Admin navigation -->
+
+    <ul class="nav nav-tabs mb-4">
+
+        <li class="nav-item">
+
+            <a
+                class="nav-link"
+                href="{{ url_for('admin') }}"
+            >
+                📊 管理首页
+            </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <a
+                class="nav-link active"
+                href="{{ url_for('create_section') }}"
+            >
+                ＋ 新建单元
+            </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <a
+                class="nav-link"
+                href="{{ url_for('sections') }}"
+            >
+                📚 所有单元
+            </a>
+
+        </li>
+
+
+        <li class="nav-item">
+
+            <a
+                class="nav-link"
+                href="{{ url_for('leaderboard') }}"
+            >
+                🏆 排行榜
+            </a>
+
+        </li>
+
+    </ul>
+
+
+    <!-- Page title -->
+
+    <div class="mb-4">
+
+        <div class="d-flex align-items-center gap-2 mb-2">
+
+            <a
+                href="{{ url_for('admin') }}"
+                class="text-secondary text-decoration-none"
+            >
+                教师管理
+            </a>
+
+            <span class="text-secondary">
+                /
+            </span>
+
+            <span class="text-secondary">
+                新建单元
+            </span>
+
+        </div>
+
+        <h1 class="h2 fw-bold mb-2">
+            新建学习单元
+        </h1>
+
+        <p class="text-secondary mb-0">
+            创建一个新的中文学习单元
+        </p>
+
+    </div>
+
+
+    <!-- Main content -->
+
+    <div class="row g-4">
+
+
+        <!-- Form -->
+
+        <div class="col-12 col-lg-8">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body p-4">
+
+                    <form
+                        action="{{ url_for('create_section') }}"
+                        method="POST"
+                    >
+
+                        <!-- Title -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="title"
+                                class="form-label fw-semibold"
+                            >
+                                单元名称
+                            </label>
+
+                            <input
+                                type="text"
+                                class="form-control form-control-lg"
+                                id="title"
+                                name="title"
+                                placeholder="例如：日常问候"
+                                maxlength="100"
+                                required
+                                autofocus
+                            >
+
+                            <div class="form-text">
+                                输入学习单元的名称。
+                            </div>
+
+                        </div>
+
+
+                        <!-- Description -->
+
+                        <div class="mb-4">
+
+                            <label
+                                for="description"
+                                class="form-label fw-semibold"
+                            >
+                                单元描述
+                            </label>
+
+                            <textarea
+                                class="form-control"
+                                id="description"
+                                name="description"
+                                rows="5"
+                                placeholder="例如：学习中文中的基本问候语和日常表达。"
+                            ></textarea>
+
+                            <div class="form-text">
+                                简单描述这个学习单元的内容。
+                            </div>
+
+                        </div>
+
+
+                        <hr class="my-4">
+
+
+                        <!-- Buttons -->
+
+                        <div class="d-flex justify-content-between">
+
+                            <a
+                                href="{{ url_for('admin') }}"
+                                class="btn btn-outline-secondary"
+                            >
+                                取消
+                            </a>
+
+                            <button
+                                type="submit"
+                                class="btn btn-primary px-4"
+                            >
+                                创建单元
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- Information -->
+
+        <div class="col-12 col-lg-4">
+
+            <div class="card shadow-sm border-0">
+
+                <div class="card-body p-4">
+
+                    <div class="fs-2 mb-3">
+                        📚
+                    </div>
+
+                    <h5 class="fw-bold">
+                        关于学习单元
+                    </h5>
+
+                    <p class="text-secondary mb-0">
+                        创建单元后，你可以在其中添加中文词汇、
+                        拼音、翻译以及相关性分数。
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}
+```

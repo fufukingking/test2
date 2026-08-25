@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    {{ section["title"] }}
+{% endblock %}
+
+{% block main %}
+
+<div class="container mt-4">
+
+    <!-- Zurück -->
+    <div class="mb-4">
+        <a
+            href="{{ url_for('sections') }}"
+            class="btn btn-outline-secondary"
+        >
+            所有学习单元
+        </a>
+    </div>
+
+
+    <!-- Section Header -->
+    <div class="text-center mb-5">
+
+        <h1>{{ section["title"] }}</h1>
+
+        {% if section["description"] %}
+            <p class="text-muted">
+                {{ section["description"] }}
+            </p>
+        {% endif %}
+
+        <!-- Übung starten -->
+        <div class="mt-4">
+
+            <a
+                href="{{ url_for('practice', section_id=section['id']) }}"
+                class="btn btn-success btn-lg"
+            >
+                练习词汇
+            </a>
+
+        </div>
+
+    </div>
+
+
+    <!-- Vokabeln -->
+    <h2 class="mb-4">
+        Vokabeln
+    </h2>
+
+
+    {% if vocabulary %}
+
+        <div class="row">
+
+            {% for word in vocabulary %}
+
+                <div class="col-md-6 col-lg-4 mb-4">
+
+                    <div class="card h-100 shadow-sm">
+
+                        <div class="card-body text-center">
+
+                            <h3 class="card-title">
+                                {{ word["chinese"] }}
+                            </h3>
+
+                            {% if word["pinyin"] %}
+                                <p class="text-muted">
+                                    {{ word["pinyin"] }}
+                                </p>
+                            {% endif %}
+
+                            <p class="fs-5">
+                                {{ word["translation"] }}
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            {% endfor %}
+
+        </div>
+
+    {% else %}
+
+        <div class="alert alert-info">
+            这个单元还没有词汇。请稍后再来，或者联系管理员添加词汇。
+        </div>
+
+    {% endif %}
+
+</div>
+
+{% endblock %}
