@@ -25,7 +25,7 @@
         </div>
 
         <a
-            href="{{ url_for('index') }}"
+            href="{{ url_for('routes.index') }}"
             class="btn btn-outline-secondary"
         >
             返回学习平台
@@ -42,7 +42,7 @@
 
             <a
                 class="nav-link"
-                href="{{ url_for('admin') }}"
+                href="{{ url_for('routes.admin') }}"
             >
                 📊 管理首页
             </a>
@@ -54,7 +54,7 @@
 
             <a
                 class="nav-link active"
-                href="{{ url_for('create_section') }}"
+                href="{{ url_for('routes.create_section') }}"
             >
                 ＋ 新建单元
             </a>
@@ -66,7 +66,7 @@
 
             <a
                 class="nav-link"
-                href="{{ url_for('sections') }}"
+                href="{{ url_for('routes.sections') }}"
             >
                 📚 所有单元
             </a>
@@ -78,7 +78,7 @@
 
             <a
                 class="nav-link"
-                href="{{ url_for('leaderboard') }}"
+                href="{{ url_for('routes.leaderboard') }}"
             >
                 🏆 排行榜
             </a>
@@ -95,7 +95,7 @@
         <div class="d-flex align-items-center gap-2 mb-2">
 
             <a
-                href="{{ url_for('admin') }}"
+                href="{{ url_for('routes.admin') }}"
                 class="text-secondary text-decoration-none"
             >
                 教师管理
@@ -136,7 +136,7 @@
                 <div class="card-body p-4">
 
                     <form
-                        action="{{ url_for('create_section') }}"
+                        action="{{ url_for('routes.create_section') }}"
                         method="POST"
                     >
 
@@ -203,7 +203,7 @@
                         <div class="d-flex justify-content-between">
 
                             <a
-                                href="{{ url_for('admin') }}"
+                                href="{{ url_for('routes.admin') }}"
                                 class="btn btn-outline-secondary"
                             >
                                 取消
