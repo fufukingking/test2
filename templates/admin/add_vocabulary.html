@@ -17,7 +17,7 @@
             <div class="d-flex align-items-center gap-2 mb-2">
 
                 <a
-                    href="{{ url_for('admin') }}"
+                    href="{{ url_for('routes.admin') }}"
                     class="text-secondary text-decoration-none"
                 >
                     教师管理
@@ -28,7 +28,7 @@
                 </span>
 
                 <a
-                    href="{{ url_for('admin_section', section_id=section['id']) }}"
+                    href="{{ url_for('routes.admin_section', section_id=section['id']) }}"
                     class="text-secondary text-decoration-none"
                 >
                     {{ section['title'] }}
@@ -55,7 +55,7 @@
         </div>
 
         <a
-            href="{{ url_for('admin_section', section_id=section['id']) }}"
+            href="{{ url_for('routes.admin_section', section_id=section['id']) }}"
             class="btn btn-outline-secondary"
         >
             返回单元
@@ -75,7 +75,7 @@
                 <div class="card-body p-4">
 
                     <form
-                        action="{{ url_for('add_vocabulary', section_id=section['id']) }}"
+                        action="{{ url_for('routes.add_vocabulary', section_id=section['id']) }}"
                         method="POST"
                     >
 
@@ -197,7 +197,7 @@
                         <div class="d-flex justify-content-between">
 
                             <a
-                                href="{{ url_for('admin_section', section_id=section['id']) }}"
+                                href="{{ url_for('routes.admin_section', section_id=section['id']) }}"
                                 class="btn btn-outline-secondary"
                             >
                                 取消
