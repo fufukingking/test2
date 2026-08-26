@@ -11,7 +11,7 @@
     <!-- Zurück -->
     <div class="mb-4">
         <a
-            href="{{ url_for('sections') }}"
+            href="{{ url_for('routes.sections') }}"
             class="btn btn-outline-secondary"
         >
             所有学习单元
@@ -34,7 +34,7 @@
         <div class="mt-4">
 
             <a
-                href="{{ url_for('practice', section_id=section['id']) }}"
+                href="{{ url_for('routes.practice', section_id=section['id']) }}"
                 class="btn btn-success btn-lg"
             >
                 练习词汇
