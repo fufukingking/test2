@@ -20,7 +20,14 @@ from help import apology, login_required
 
 bp = Blueprint("routes", __name__)
 
-DATABASE_URL = os.environ.get("DATABASE_URL")
+DATABASE_URL = os.environ.get("DATABASE_URL", "")
+
+if DATABASE_URL.startswith("postgres://"):
+    DATABASE_URL = DATABASE_URL.replace("postgres://", "postgresql://", 1)
+
+if "sslmode=" not in DATABASE_URL:
+    separator = "&" if "?" in DATABASE_URL else "?"
+    DATABASE_URL = f"{DATABASE_URL}{separator}sslmode=require"
 
 
 class CompatibilityCursor(Cursor):
@@ -511,3 +518,4 @@ def import_excel(section_id):
     db.close()
     flash(f"{imported} Vokabeln erfolgreich importiert!")
     return redirect(f"/admin/section/{section_id}")
+
