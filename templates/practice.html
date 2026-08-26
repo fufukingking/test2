@@ -57,7 +57,7 @@
     <div class="game-footer">
 
         <a
-            href="{{ url_for('section', section_id=section['id']) }}"
+            href="{{ url_for('routes.section', section_id=section['id']) }}"
             class="btn btn-outline-secondary"
         >
             ← 返回学习单元
@@ -510,7 +510,7 @@
 
             const response =
                 await fetch(
-                    "{{ url_for('practice_point', section_id=section['id']) }}",
+                    "{{ url_for('routes.practice_point', section_id=section['id']) }}",
                     {
                         method: "POST"
                     }
